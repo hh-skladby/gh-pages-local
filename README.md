@@ -111,3 +111,15 @@ You should add these files and folders that are only relevant for build processe
 * https://github.com/benbalter/jekyll-relative-links
 
 
+## Syntax highlighting
+
+... may differ
+
+
+## Using other theme
+
+... jekyll-remote-theme
+
+... Metadata plugin problem
+
+
