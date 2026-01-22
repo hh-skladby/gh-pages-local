@@ -1,1 +1,9 @@
 00_wt_*/
+
+# Jekyll build temporary
+.jekyll-cache/
+.jekyll-metadata/
+_site
+
+# Sass CSS preprocessor - used in HTML themes
+.sass-cache/
