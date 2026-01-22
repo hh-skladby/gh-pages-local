@@ -161,39 +161,47 @@ Install it by
 
 #### [jekyll-relative-links](https://github.com/benbalter/jekyll-relative-links)
 
-Makes ...
+Makes links to Markdown files to links to the rendered HTML version of the target, i.e. preventing `see [details](more.md)` to become `see <a href="more.md">details</a>` that would open the unrendered Markdown file `more.md`, but instead `see <a href="more.html">details</a>` that opens the rendered HTML file `more.html`
 
 Install it by
 
 ```shell
   gem install jekyll-relative-links
 ```
-
 
 #### [jekyll-remote-theme](https://github.com/benbalter/jekyll-remote-theme)
 
+... jekyll-theme-primer
+
 Makes ...
 
 Install it by
 
 ```shell
-  gem install jekyll-relative-links
+  gem install jekyll-remote-theme
 ```
 
 
-
-...
-
-... [dependencies of GitHub Pages Ruby Gem](https://github.com/github/pages-gem/blob/master/lib/github-pages/dependencies.rb) hints to required plugins + configs [https://github.com/github/pages-gem/blob/master/lib/github-pages/configuration.rb]()
-
-* https://github.com/benbalter/jekyll-optional-front-matter
-* https://github.com/benbalter/jekyll-readme-index
-* https://github.com/benbalter/jekyll-relative-links
 
 
 ## Syntax highlighting
 
-... may differ
+GitHub Pages uses version 3.30 of [Rouge](https://rouge.jneen.net/) for syntax highlighting in code examples (see above for GitHub Pages settings JSON).
+
+Try
+
+  ```shell
+    gem list rouge
+  ```
+
+on a command line to confirm that you have the right version installed, otherwise install it with
+
+
+  ```shell
+    gem install rouge -v 3.30.0
+  ```
+
+**Uninstall other version of Rouge, especially newer ones, by `gem uninstall rouge` (follow the interactive diaglogues to uninstall specific versions)**
 
 
 ## Using other theme
@@ -202,4 +210,8 @@ Install it by
 
 ... Metadata plugin problem
 
+
+## Running local GitHub Pages preview
+
+... jekyll serve -l
 
