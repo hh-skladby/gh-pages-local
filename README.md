@@ -2,7 +2,7 @@
 
 [GitHub Pages](https://docs.github.com/en/pages/quickstart) are a straighforward way to present contents of GitHub repos in a more convenient way, e.g. for a structured project presentation instead of the default repository view. To maintain them locally you need [Jekyll](https://jekyllrb.com/), the site generator behind Pages, with some specific plugins.
 
-The following shows an easy and minimal way (no [Actions](https://github.com/marketplace?query=jekyll&type=actions), no [Gemfile](https://bundler.io/man/gemfile.5.html) per repo, no deeper [Jekyll configuration](https://jekyllrb.com/docs/configuration/) ) to add GitHub Pages functionality to a local repo.
+The following shows an easy and minimal way (no [Actions](https://github.com/marketplace?query=jekyll&type=actions), no [Gemfile](https://bundler.io/man/gemfile.5.html) per repo, no deeper [Jekyll configuration](https://jekyllrb.com/docs/configuration/)) to add GitHub Pages functionality to a local repo.
 
 
 ## Repo settings on GitHub
@@ -62,7 +62,7 @@ Required settings in your local repo boil down to a `_config.yml` file with the 
     # - PULL_REQUEST_TEMPLATE
 ```
 
-> The `title` field is technically only necessary if you would change to a theme (see below) or add a plugin requiring it; if not defined, GitHub Pages uses the `jekyll-github-metadata` plugin to retrieve it from the repo's name on GitHub that of course is not immediately available locally, but quite naturally you will sooner or later prefer a nicer title than the repo's folder name - see `jekyll-github-metadata` itself that presents itself not by its kebab cased repo folder name "github-metadata", but as [GitHub Metadata](https://jekyll.github.io/github-metadata/) (see the `title` setting in [its own _config.yml](https://github.com/jekyll/github-metadata/blob/main/docs/_config.yml)).
+> The `title` field is technically only necessary if you would change to a theme (see below) or add a plugin requiring it; if not defined, GitHub Pages uses the `jekyll-github-metadata` plugin to retrieve it from the repo's name on GitHub that of course is not directly available locally, but quite naturally you will sooner or later prefer a nicer title than the repo's folder name - see `jekyll-github-metadata` itself that presents itself not by its kebab cased repo folder name "github-metadata", but as [GitHub Metadata](https://jekyll.github.io/github-metadata/) (see the `title` setting in [its own _config.yml](https://github.com/jekyll/github-metadata/blob/main/docs/_config.yml)).
 
 `_config.yml` is in YAML format, the `#` comment marker "deactivates" every line it precedes. The list under `include` is the list of files that the `jekyll-optional-front-matter` plugin (see below) will ignore by default - if you e.g. want your `README.md` file to be rendered as `../your-repo/readme.html`, you have to delete the `#` before `- README.md`. Note that being "ignored" does not mean that the file would not exist in a GitHub Pages output, it would just not be transformed to an HTML file. So explicitly including `README.md` would give you `../your-repo/README.html` **and** `../your-repo/README.md`, "ignoring" it **only** `../your-repo/README.md` - this might play a role for links inside of your files and what you expect them to link to. Note also that `README.md` as such is used by another plugin here, `jekyll-readme-index`, to act as input for `../your-repo/index.html` if no dedicated `index.md` is given in your repo.
 
@@ -88,18 +88,37 @@ You should add these files and folders that are only relevant for build processe
 
 ## Local Jekyll setup
 
-... NOT per repo
+> **If you already have installed Jekyll, check if it is the version given below, otherwise uninstall your version or find a way for different environments with separate Jekyll installations.**
 
-... Both Jekyll ([Docs: "GitHub Pages"](https://jekyllrb.com/docs/github-pages/)) and GitHub ([Setting up a GitHub Pages site with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)) have rich setup instructions, but these are targeting 
+Both Jekyll ([Docs: "GitHub Pages"](https://jekyllrb.com/docs/github-pages/)) and GitHub ([Setting up a GitHub Pages site with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)) have rich setup instructions, but they don't tell you that out of the box Jekyll will be installed in version 4.x while GitHub Pages sticks to the latest 3.x version (obviously to keep tons of older GitHub Pages alive without individual migrations). This may be no problem for complex and sophisticated Jekyll projects, especially with own [GitHub Actions](https://jekyllrb.com/docs/continuous-integration/github-actions/#advantages-of-using-actions) and [Gemfiles](https://jekyllrb.com/docs/step-by-step/10-deployment/#gemfile), but if you want to keep things small and convenient and therefore prefer to rely on defaults, you may go the following steps. **Of course this installation has to be done only once, not for each repo you want to use it in**.
+
+### Prerequisites
+
+Jekyll is a [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) application, so **you need a Ruby runtime installation** to use it (you may think of Ruby as something like what [Node.js](https://nodejs.org/) is for JavaScript).
+  * Try
+      ```shell
+        ruby -v
+      ```
+    on a command line to see if Ruby is installed (chances are good on Linux and macOS to be pre-installed). If not, check the possibilties on [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation) for the one that fits your system (and your level of experience)
+
+With Ruby should come **its package manager [RubyGems](https://guides.rubygems.org/)** that allows you to install Ruby application packages (you may think of RubyGems as something like what [npm](https://npmjs.org) is for Node.js). A Ruby application package is called a `gem`, and that is also the name of the command to install a gem.
+  * Try
+      ```shell
+        gem -v
+      ```
+    on a command line to confirm that RubyGems is installed. If not, refer to [its documentation](https://github.com/ruby/rubygems?tab=readme-ov-file#installation) to solve this.
 
 
+### Installing Jekyll
 
-, including "automation" by the ..., but a huge problem is that Jekyll as a standalone project and Jekyll as an integrated part of GitHub have diverted, making local setups not working as expected.
+To be able to mimic GitHub Pages defaults locally you need the exact same Jekyll version as used by GitHub - thankfully documented in the publicly available [GitHub Pages settings JSON](https://pages.github.com/versions.json), currently `3.10.0`, so the command line is
 
+  ```shell
+    gem install jekyll -v 3.10.0
+  ```
 
-...
+See the "Build with Jekyll" step in [this actually ran GitHub action](https://github.com/jekyll/github-metadata/actions/runs/19973767489/job/57284696390) for the mentioned GitHub Page settings in action.
 
-... Jekyll version and dependencies see also e.g. [https://github.com/hh-lohmann/26amj38/actions/runs/21244691252/job/61130907235]()
 
 
 ## Jekyll plugins
