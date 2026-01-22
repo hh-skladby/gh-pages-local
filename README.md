@@ -117,15 +117,72 @@ To be able to mimic GitHub Pages defaults locally you need the exact same Jekyll
     gem install jekyll -v 3.10.0
   ```
 
+**Note that newer Jekyll versions are not suitable for the plugins used by GitHub Pages** (see below).
+
 See the "Build with Jekyll" step in [this actually ran GitHub action](https://github.com/jekyll/github-metadata/actions/runs/19973767489/job/57284696390) for the mentioned GitHub Page settings in action.
 
 
 
 ## Jekyll plugins
 
-...
+> **If you have already Jekyll plugins installed you may have to replace it by older versions to make them work with the required GitHub Pages plugins, e.g. `gem uninstall plugin_xy` and `gem install plugin_xy@v1.2.3`** - in case read possible error massages carefully and consult the plugin's documentation
 
-... https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
+The correct Jekyll version (see above) allows to run exactly the plugins [that are used by GitHub Pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins) of which the ones stated in the `_config.yml` example above are important locally:
+
+#### [jekyll-default-layout](https://github.com/benbalter/jekyll-default-layout)
+
+Makes explicit `_config.yml` settings for layout templates unnecessary by applying well known standards
+
+Install it by
+
+```shell
+  gem install jekyll-default-layout
+```
+
+#### [jekyll-optional-front-matter](https://github.com/benbalter/jekyll-optional-front-matter)
+
+Makes [Front Matters](https://jekyllrb.com/docs/front-matter/) for Markdown files unnecessary.
+
+Install it by
+
+```shell
+  gem install jekyll-optional-front-matter
+```
+
+#### [jekyll-readme-index](https://github.com/benbalter/jekyll-readme-index)
+
+Makes [an explicit index.md](https://jekyllrb.com/tutorials/convert-site-to-jekyll/#what-is-a-jekyll-website) unnecessary by using a README.md to produce an `index.html`
+
+Install it by
+
+```shell
+  gem install jekyll-readme-index
+```
+
+#### [jekyll-relative-links](https://github.com/benbalter/jekyll-relative-links)
+
+Makes ...
+
+Install it by
+
+```shell
+  gem install jekyll-relative-links
+```
+
+
+#### [jekyll-remote-theme](https://github.com/benbalter/jekyll-remote-theme)
+
+Makes ...
+
+Install it by
+
+```shell
+  gem install jekyll-relative-links
+```
+
+
+
+...
 
 ... [dependencies of GitHub Pages Ruby Gem](https://github.com/github/pages-gem/blob/master/lib/github-pages/dependencies.rb) hints to required plugins + configs [https://github.com/github/pages-gem/blob/master/lib/github-pages/configuration.rb]()
 
