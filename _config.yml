@@ -1,3 +1,5 @@
+title: Your Title
+
 plugins:
   - jekyll-default-layout
   - jekyll-optional-front-matter

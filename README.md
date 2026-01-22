@@ -40,6 +40,8 @@ Our goal here is to achieve a local preview for what GitHub Pages would render a
 Required settings in your local repo boil down to a `_config.yml` file with the following content:
 
 ```yaml
+  title: Your Title
+
   plugins:
     - jekyll-default-layout
     - jekyll-optional-front-matter
@@ -60,9 +62,11 @@ Required settings in your local repo boil down to a `_config.yml` file with the 
     # - PULL_REQUEST_TEMPLATE
 ```
 
+> The `title` field is technically only necessary if you would change to a theme (see below) or add a plugin requiring it; if not defined, GitHub Pages uses the `jekyll-github-metadata` plugin to retrieve it from the repo's name on GitHub that of course is not immediately available locally, but quite naturally you will sooner or later prefer a nicer title than the repo's folder name - see `jekyll-github-metadata` itself that presents itself not by its kebab cased repo folder name "github-metadata", but as [GitHub Metadata](https://jekyll.github.io/github-metadata/) (see the `title` setting in [its own _config.yml](https://github.com/jekyll/github-metadata/blob/main/docs/_config.yml)).
+
 `_config.yml` is in YAML format, the `#` comment marker "deactivates" every line it precedes. The list under `include` is the list of files that the `jekyll-optional-front-matter` plugin (see below) will ignore by default - if you e.g. want your `README.md` file to be rendered as `../your-repo/readme.html`, you have to delete the `#` before `- README.md`. Note that being "ignored" does not mean that the file would not exist in a GitHub Pages output, it would just not be transformed to an HTML file. So explicitly including `README.md` would give you `../your-repo/README.html` **and** `../your-repo/README.md`, "ignoring" it **only** `../your-repo/README.md` - this might play a role for links inside of your files and what you expect them to link to. Note also that `README.md` as such is used by another plugin here, `jekyll-readme-index`, to act as input for `../your-repo/index.html` if no dedicated `index.md` is given in your repo.
 
-The settings given as above reflect defaults on GitHub Pages (see below), i.e. they would not change anything on GitHub, but they are required to make your local Pages preview look like on GitHub. **If you delete one or more `#` under `include` you MUST push `_config.yml` with your repo to let GitHub Pages reflect your choices** - and of course if you add more settings.
+The settings given as above (except of `title`, see above) reflect defaults on GitHub Pages (see below), i.e. they would not change anything on GitHub, but they are required to make your local Pages preview look like on GitHub. **If you delete one or more `#` under `include` you MUST push `_config.yml` with your repo to let GitHub Pages reflect your choices** - and of course if you add more settings.
 
   * `_config.yml` is not a special GitHub Pages file, but the "normal" [configuration file for Jekyll](https://jekyllrb.com/docs/configuration/) to build HTML files. Be aware of the "_" prefix, without it Jekyll would not recognize it. **Note that the `include` section is not special to the `jekyll-optional-front-matter` plugin** - the plugin makes use of it, but it is a general [Jekyll configuration option](https://jekyllrb.com/docs/configuration/options/).
 
