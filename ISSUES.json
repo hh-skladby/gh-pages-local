@@ -1,0 +1,14 @@
+{
+  "0": "ISSUES",
+  "for": "gh-pages-local",
+  "1": { "0": "@:TODO Exclude subdirs",
+    "1": { "0": "Prevent search through large subdirs that are not meant to be part of GitHub Pages outcome" },
+    "2": { "0": "!!! Large subdirs break 'watch'",
+      "1": { "0": "unclear: settings for 'watch'?",
+       "1": { "0": "Jekyll 'exclude' and even prefixing with '_' obviously has no effect" }
+      },
+      "2": { "0": "circumvent by '--no-watch'" }
+    },
+    "3": { "0": "=> https://jekyllrb.com/docs/configuration/options/" }
+  }
+}
