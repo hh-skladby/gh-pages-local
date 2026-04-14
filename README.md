@@ -215,3 +215,18 @@ on a command line to confirm that you have the right version installed, otherwis
 
 ... jekyll serve -l
 
+
+## Repo view vs. Pages View
+
+The rendering of markup files inside the repo view on GitHub is ["aggressively removing things that could harm you and your kin"](https://github.com/github/markup?tab=readme-ov-file#github-markup) - unfortunately including "style" attributes that would allow produce whitespace at the end of the page to adjust the display when jumping to links at the end of the page. But on GitHub Pages there is no stripping off, so targeting at Pages you can use styles.
+
+As an escape hatch for stripped display in repo view you can add a hint to switch to the Pages version:
+
+```html
+  <p align="center" style="display:none;">
+  <b><i>This page may be displayed less optimal in repo view - you may switch to <a href="https://YOUR-NAME.github.io/REPO/">the GitHub Pages view</a> instead</i></b>
+  </p>
+```
+
+This hint will be displayed in repo view since `style="display:none;"` is stripped off, but not in Pages view where styles are kept.
+
