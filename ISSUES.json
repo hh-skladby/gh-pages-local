@@ -1,6 +1,13 @@
 {
   "0": "ISSUES",
   "for": "gh-pages-local",
+  "#801a8502": { "m": "@:TODO Jekyll as one possibility between others, esp. Markserv" },
+  "#ca7949bd": { "m": "@:TODO Repo view vs. Pages View",
+    "1": { "m": "@:TODO Repo view has no styles => very bad for endspacer = getting link targets focussed" },
+    "2": { "m": "@:TODO switch-to-page-hint: Paragraph only visible in repo with link to Pages view",
+      "1": { "m": "Using the fact that repo view will strip out a `display: none`" }
+    }
+  },
   "1": { "0": "@:TODO Exclude subdirs",
     "1": { "0": "Prevent search through large subdirs that are not meant to be part of GitHub Pages outcome" },
     "2": { "0": "!!! Large subdirs break 'watch'",
