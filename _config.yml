@@ -9,7 +9,7 @@ plugins:
 
 remote_theme: pages-themes/primer
 
-include:
+# include:
   # - README.md
   # - LICENSE
   # - LICENCE
